@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fleabag</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+      background-color: #f0f0f0;
+      transition: background-color 0.3s ease;
+    }
+    #time {
+      font-size: 2em;
+      color: brown;
+      margin: 20px 0;
+    }
+    .hover-image {
+      display: inline-block;
+      position: relative;
+      margin: 20px;
+    }
+    .hover-image img {
+      width: 200px;
+      height: 200px;
+      border-radius: 10px;
+      border: 2px solid brown;
+      cursor: pointer;
+    }
+    .hover-text {
+      display: none;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+    .hover-image:hover .hover-text {
+      display: block;
+    }
+    #background-btn {
+      padding: 10px 20px;
+      background-color: brown;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1.2em;
+    }
+    #background-btn:hover {
+      background-color: black;
+    }
+    #dynamic-text {
+      font-size: 1.5em;
+      color: black;
+      transition: color 0.3s ease, font-size 0.3s ease;
+    }
+    #dynamic-text:hover {
+      color: brown;
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>101 reasons to get the haircut!!!</h1>
+  
+  <!-- Dynamic Time Display -->
+  <div id="time">Time will appear here</div>
+  
+  <!-- Image Hover with Text -->
+  <div class="hover-image">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRA1gnCS7IdiayNsSo4K7XB42fuH8YHyoGFaA&s" alt="Hover Example">
+    <div class="hover-text">Pencil!</div>
+  </div>
+  
+  <!-- Button to Change Background Color -->
+  <button id="background-btn" onclick="changeBackgroundColor()">Change Background Color</button>
+  
+  <!-- Hover to Change Text -->
+  <p id="dynamic-text" onmouseover="changeText(this)" onmouseout="resetText(this)">Get the haircut</p>
+
+  <script>
+    // Feature 1: Dynamic Time Display
+    function updateTime() {
+      const now = new Date();
+      const timeString = now.toLocaleTimeString();
+      document.getElementById('time').textContent = `Current Time: ${timeString}`;
+    }
+    setInterval(updateTime, 1000);
+
+    // Feature 2: Change Background Color on Click
+    function changeBackgroundColor() {
+      const colors = ['#f4cccc', '#c9daf8', '#d9ead3', '#fff2cc', '#d0e0e3'];
+      const randomColor = colors[Math.floor(Math.random() * colors.length)];
+      document.body.style.backgroundColor = randomColor;
+    }
+
+    // Feature 3: Change Text on Hover
+    function changeText(element) {
+      element.textContent = "Just Don't!";
+    }
+
+    function resetText(element) {
+      element.textContent = "Get the haircut";
+    }
+  </script>
+</body>
+</html>
